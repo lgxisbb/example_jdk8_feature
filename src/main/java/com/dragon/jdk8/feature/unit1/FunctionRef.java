@@ -13,7 +13,7 @@ package com.dragon.jdk8.feature.unit1;
  * 类    :: 实例方法 {{@link String#toUpperCase()}}
  * 这种方法引用, 会把第一个参数当成去执行这个实例方法的对象
  * 所以这种方式限定的类第一个参数只能是传递参数类型的类
- * new FunctionRef().refFunctionPrint(String::toUpperCase);
+ * String::toUpperCase
  */
 public class FunctionRef {
 
