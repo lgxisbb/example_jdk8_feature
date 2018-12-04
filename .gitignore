@@ -2,3 +2,5 @@
 *.impl
 out
 log*
+.gradle/
+build/

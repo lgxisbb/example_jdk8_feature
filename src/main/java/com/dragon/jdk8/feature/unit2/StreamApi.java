@@ -16,12 +16,16 @@ public class StreamApi {
      */
     static class StreamFilter {
         public static void main(String[] args) {
-            Stream<Double> genRandom = Stream.generate(Math::random).limit(10);
+            // 生成10个随机数值
+            Stream<Integer> originStream = Stream.generate(Math::random)
+                    .limit(10).map(d ->
+                            Double.valueOf(d * 10).intValue()
+                    );
+
             // 过滤掉小于五的数值
-            genRandom.filter((d) -> d * 10 > 5).forEach((d) -> {
-                double x = d * 100 % 10;
-                System.out.println(x);
-            });
+            Stream<Integer> filterStream = originStream.filter(d -> d > 5);
+            // 过滤之后
+            filterStream.forEach(System.out::println);
         }
     }
 
@@ -47,7 +51,7 @@ public class StreamApi {
             System.out.println(skip.count());
 
             // concat two stream
-            Stream<Character> streamConcat = Stream.concat(Stream.of('h', 'e', 'l', 'l', 'o'), Stream.of(' ','w', 'o', 'r', 'l', 'd'));
+            Stream<Character> streamConcat = Stream.concat(Stream.of('h', 'e', 'l', 'l', 'o'), Stream.of(' ', 'w', 'o', 'r', 'l', 'd'));
             streamConcat.forEach(System.out::print);
         }
     }
